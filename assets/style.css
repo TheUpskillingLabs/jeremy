@@ -2,6 +2,9 @@
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f7f8fa;line-height:1.55}
 #report{max-width:920px;margin:0 auto;padding:32px 20px 80px}
 .loading{color:var(--muted)}
+.backlink{max-width:920px;margin:0 auto;padding:20px 20px 0;font-size:.9rem}
+.backlink a{color:var(--teal);text-decoration:none}
+.backlink a:hover{text-decoration:underline}
 .site-head h1{font-size:2rem;margin:0 0 8px}
 .site-head .concept{font-size:1.1rem;color:var(--muted);margin:0 0 8px}
 section{background:#fff;border:1px solid var(--cloud);border-radius:12px;padding:20px 24px;margin:20px 0;box-shadow:0 1px 3px rgba(16,24,32,.06)}
