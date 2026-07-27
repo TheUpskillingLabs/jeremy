@@ -2,13 +2,773 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Money is too effective in campaigns</title>
-<link rel="stylesheet" href="./assets/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Money is too effective in campaigns — vote to form this pod</title>
+<meta name="description" content="A Frame Creation map of how campaign capital converts into narrative dominance. Mapped, not solved. Vote to form the research pod that goes after what's missing.">
+<meta property="og:title" content="Money is too effective in campaigns">
+<meta property="og:description" content="7 signals in. Three blind spots wide open. Vote to form the pod.">
+<meta property="og:type" content="website">
+<style>
+/* ————————————————————————————————————————————————
+   The Upskilling Labs · Pod ballot
+   One accent (teal). One tension colour (red). Type does the work.
+   ———————————————————————————————————————————————— */
+:root{
+  --paper:#0b1117;
+  --paper-2:#0f1720;
+  --ink:#eef3f4;
+  --fog:#9aa8b2;
+  --fog-dim:#6b7883;
+  --teal:#22c3cf;
+  --teal-deep:#0e6f79;
+  --red:#ff4d4d;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.16);
+  --gutter:clamp(20px,5vw,64px);
+  --measure:70ch;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--sans);
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+a{color:inherit}
+::selection{background:var(--teal);color:#04252a}
+
+/* —— layout primitives —— */
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding-inline:var(--gutter)}
+.narrow{max-width:var(--measure)}
+section{padding-block:clamp(64px,11vw,140px);position:relative}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+
+/* —— type —— */
+.eyebrow{
+  font-size:clamp(10px,2.4vw,12px);letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700;color:var(--teal);
+}
+h1{
+  font-size:clamp(34px,7.6vw,74px);line-height:1.03;letter-spacing:-.035em;
+  font-weight:800;text-wrap:balance;
+}
+h2{
+  font-size:clamp(26px,5.2vw,48px);line-height:1.08;letter-spacing:-.03em;
+  font-weight:800;text-wrap:balance;
+}
+h3{font-size:clamp(17px,3vw,21px);line-height:1.25;letter-spacing:-.015em;font-weight:700}
+.lede{font-size:clamp(17px,2.9vw,23px);line-height:1.5;color:#d3dde1;text-wrap:pretty}
+p{text-wrap:pretty}
+.muted{color:var(--fog)}
+.dim{color:var(--fog-dim)}
+.tag{
+  display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--fog);border:1px solid var(--line);
+  border-radius:999px;padding:5px 11px;
+}
+.sec-no{
+  display:block;font-family:var(--mono);font-size:12px;letter-spacing:.16em;
+  color:var(--teal);margin-bottom:14px;
+}
+
+/* —— buttons —— */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:14px 26px;border-radius:999px;
+  font-weight:700;font-size:16px;letter-spacing:-.01em;text-decoration:none;
+  border:1px solid transparent;cursor:pointer;
+  transition:transform .18s ease,background .18s ease,border-color .18s ease,color .18s ease;
+}
+.btn-primary{background:var(--teal);color:#04252a}
+.btn-primary:hover{background:#4ad6e1;transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line-2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+
+/* —— scroll progress —— */
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);
+  transform-origin:0 50%;background:var(--teal);z-index:60;
+}
+
+/* —— top bar —— */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px var(--gutter);
+  padding-top:calc(14px + env(safe-area-inset-top));
+  background:rgba(11,17,23,0);backdrop-filter:blur(0px);
+  border-bottom:1px solid transparent;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
+}
+.topbar.stuck{
+  background:rgba(11,17,23,.82);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);border-bottom-color:var(--line);
+}
+.brand{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fog)}
+.brand b{color:var(--ink);font-weight:700}
+.topbar .btn{min-height:44px;padding:10px 20px;font-size:14px}
+.topbar .btn{opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .3s ease,transform .3s ease,background .18s ease}
+.topbar.stuck .btn{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:520px){.topbar .btn{display:none}}
+
+/* ——————————————————————————————
+   A T T E N T I O N  —  hero
+   —————————————————————————————— */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(96px,16vh,160px) clamp(40px,8vh,80px);position:relative;overflow:hidden;
+}
+/* one restrained atmospheric element: a slow teal bloom + hairline grid */
+.hero::before{
+  content:"";position:absolute;inset:-20% -10% auto -10%;height:80%;
+  background:radial-gradient(60% 60% at 50% 0%,rgba(34,195,207,.16),transparent 70%);
+  pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px);
+  background-size:100% 96px;
+  mask-image:linear-gradient(180deg,transparent,#000 30%,#000 60%,transparent);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 60%,transparent);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{margin:18px 0 0;max-width:16ch}
+.hero h1 .mark{position:relative;white-space:nowrap}
+.hero h1 .mark::after{
+  content:"";position:absolute;left:-.02em;right:-.02em;bottom:.04em;height:.09em;
+  background:var(--red);border-radius:99px;transform:scaleX(0);transform-origin:0 50%;
+  animation:mark 1s cubic-bezier(.2,.7,.2,1) .7s forwards;
+}
+@keyframes mark{to{transform:scaleX(1)}}
+.hero .lede{margin-top:22px;max-width:54ch}
+.hero .btn-row{margin-top:30px}
+.hero .paradox{
+  margin-top:clamp(34px,5.5vw,52px);padding-left:18px;border-left:2px solid var(--red);
+  max-width:60ch;
+}
+.hero .paradox p{font-size:clamp(15px,2.5vw,18px);color:#c8d4d9}
+.hero .paradox .who{margin-top:8px;font-size:14px;color:var(--fog-dim)}
+
+/* scroll cue */
+.cue{
+  margin-top:clamp(28px,4.5vh,44px);display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fog-dim);
+}
+.cue span{display:block;width:1px;height:26px;background:linear-gradient(var(--teal),transparent);animation:drop 2.2s ease-in-out infinite}
+@keyframes drop{0%,100%{opacity:.25;transform:translateY(-4px)}50%{opacity:1;transform:translateY(4px)}}
+
+/* —— receipts strip —— */
+.receipts{
+  border-block:1px solid var(--line);background:var(--paper-2);
+  padding-block:clamp(24px,4vw,36px);
+}
+.receipts .grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:clamp(18px,3vw,32px);
+}
+.stat .n{
+  display:block;font-size:clamp(28px,5.5vw,44px);font-weight:800;letter-spacing:-.04em;
+  line-height:1;color:var(--ink);
+}
+.stat .n.warn{color:var(--red)}
+.stat .k{
+  display:block;margin-top:8px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--fog);line-height:1.35;
+}
+
+/* ——————————————————————————————
+   I N T E R E S T
+   —————————————————————————————— */
+.pull{
+  font-size:clamp(20px,3.6vw,30px);line-height:1.3;letter-spacing:-.02em;font-weight:600;
+  color:var(--ink);max-width:26ch;
+}
+.cols{display:grid;gap:clamp(28px,5vw,56px);grid-template-columns:1fr}
+@media (min-width:860px){.cols.two{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:start}}
+
+.forces{list-style:none;display:grid;gap:1px;background:var(--line);border-block:1px solid var(--line);margin-top:clamp(28px,5vw,44px)}
+@media (min-width:720px){.forces{grid-template-columns:1fr 1fr}}
+.forces li{background:var(--paper);padding:clamp(20px,3.4vw,30px)}
+.forces .k{
+  display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:10px;
+}
+.forces p{color:var(--fog);font-size:15px}
+
+/* evidence ladder */
+.ladder{margin-top:clamp(28px,5vw,44px);display:grid;gap:14px}
+.rung{
+  border:1px solid var(--line);border-radius:12px;padding:clamp(16px,2.8vw,22px);
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
+}
+.rung .k{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);
+}
+.rung .k b{color:var(--teal);font-weight:700}
+.rung h3{margin:8px 0 6px}
+.rung p{color:var(--fog);font-size:15px}
+.rung.indent{margin-left:0}
+@media (min-width:720px){.rung.indent{margin-left:clamp(20px,4vw,48px)}.rung.indent-2{margin-left:clamp(40px,8vw,96px)}}
+.sig{list-style:none;margin-top:14px;display:grid;gap:8px}
+.sig li{font-size:14px;color:var(--fog);padding-left:16px;position:relative;line-height:1.5}
+.sig li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:1px;background:var(--teal)}
+.sig b{color:#c8d4d9;font-weight:600}
+
+/* ——————————————————————————————
+   D E S I R E  —  the gap
+   —————————————————————————————— */
+.coverage{margin-top:clamp(28px,5vw,44px);display:grid;gap:14px;max-width:820px}
+.cov{display:grid;grid-template-columns:88px 1fr;gap:14px;align-items:center}
+@media (min-width:640px){.cov{grid-template-columns:110px 1fr auto;gap:18px}}
+.cov .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fog)}
+.cov .bar{position:relative;height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.cov .bar i{
+  position:absolute;inset:0 auto 0 0;width:var(--pct);border-radius:99px;
+  background:var(--teal);transform-origin:0 50%;transform:scaleX(0);
+  transition:transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s);
+}
+.is-in .cov .bar i{transform:scaleX(1)}
+.cov[data-level="absent"] .bar i{background:var(--red)}
+.cov[data-level="thin"] .bar i{background:#f4b400}
+.cov .val{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fog-dim);justify-self:start}
+@media (max-width:639px){.cov .val{display:none}}
+.cov[data-level="absent"] .lbl{color:var(--red)}
+
+.blindspots{
+  margin-top:clamp(28px,5vw,44px);display:grid;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;
+}
+@media (min-width:760px){.blindspots{grid-template-columns:1fr 1fr}}
+.blindspots div{background:var(--paper-2);padding:clamp(20px,3.4vw,30px)}
+.blindspots .k{
+  display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--red);margin-bottom:10px;
+}
+.blindspots p{color:#c8d4d9;font-size:15px}
+
+/* the work */
+.gaps{margin-top:clamp(28px,5vw,44px);display:grid;gap:clamp(16px,2.6vw,20px)}
+@media (min-width:900px){.gaps{grid-template-columns:repeat(3,1fr)}}
+.gap{
+  border:1px solid var(--line);border-radius:14px;padding:clamp(20px,3.2vw,26px);
+  display:flex;flex-direction:column;gap:14px;
+  background:linear-gradient(180deg,rgba(34,195,207,.05),transparent 40%);
+  transition:border-color .25s ease,transform .25s ease;
+}
+.gap:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.gap .no{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--teal)}
+.gap .q{font-size:15px;color:#c8d4d9;line-height:1.55}
+.gap dl{display:grid;gap:9px;padding-top:14px;border-top:1px solid var(--line)}
+.gap dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fog-dim)}
+.gap dd{font-size:14px;color:var(--fog);margin-top:-6px}
+.gap .change{font-size:14px;color:var(--teal);line-height:1.5}
+
+/* who benefits */
+.benefit{list-style:none;display:grid;gap:1px;background:var(--line);border-block:1px solid var(--line);margin-top:clamp(28px,5vw,44px)}
+@media (min-width:820px){.benefit{grid-template-columns:repeat(3,1fr)}}
+.benefit li{background:var(--paper);padding:clamp(20px,3.4vw,30px)}
+.benefit h3{color:var(--red);font-size:16px;letter-spacing:0}
+.benefit p{margin-top:10px;color:var(--fog);font-size:15px}
+
+/* access */
+.access{margin-top:clamp(28px,5vw,44px);display:grid;gap:14px}
+.acc{
+  border:1px solid var(--line);border-radius:12px;padding:clamp(18px,3vw,24px);
+  display:grid;gap:12px;
+}
+@media (min-width:880px){.acc{grid-template-columns:1.1fr 1fr 1.4fr;gap:24px;align-items:start}}
+.acc .need{font-weight:700;font-size:15px}
+.acc .barrier{font-size:14px;color:var(--red)}
+.acc .path{font-size:14px;color:var(--fog)}
+.acc .cap{
+  display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--fog-dim);margin-bottom:5px;
+}
+
+/* ——————————————————————————————
+   A C T I O N
+   —————————————————————————————— */
+.action{
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--line);
+  background:
+    radial-gradient(70% 90% at 50% 100%,rgba(34,195,207,.14),transparent 70%),
+    var(--paper-2);
+}
+.action .wrap{position:relative;z-index:1;text-align:center}
+.action h2{max-width:20ch;margin-inline:auto}
+.action .lede{margin:22px auto 0;max-width:52ch}
+.action .btn-row{justify-content:center;margin-top:34px}
+.action .btn-primary{min-height:60px;padding:18px 40px;font-size:17px}
+.fineprint{margin-top:20px;font-size:13px;color:var(--fog-dim)}
+
+.next{
+  margin-top:clamp(48px,8vw,80px);text-align:left;display:grid;gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+}
+@media (min-width:620px){.next{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.next{grid-template-columns:repeat(5,1fr)}}
+.next li{background:var(--paper);padding:clamp(18px,2.6vw,22px);list-style:none}
+.next .no{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--teal);display:block;margin-bottom:9px}
+.next h3{font-size:15px;letter-spacing:0}
+.next p{margin-top:7px;font-size:13.5px;color:var(--fog);line-height:1.5}
+
+/* sticky mobile CTA */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;
+  padding:12px var(--gutter);
+  padding-bottom:calc(12px + env(safe-area-inset-bottom));
+  background:rgba(11,17,23,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+  transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.sticky-cta.show{transform:none}
+.sticky-cta .btn{width:100%}
+@media (min-width:521px){.sticky-cta{display:none}}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding-block:clamp(36px,6vw,56px);font-size:13px;color:var(--fog-dim)}
+footer .row{display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;align-items:center}
+footer a{color:var(--fog);text-decoration:none;border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--teal);border-color:var(--teal)}
+body.has-sticky footer{padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+@media (min-width:521px){body.has-sticky footer{padding-bottom:clamp(36px,6vw,56px)}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hero h1 .mark::after{transform:scaleX(1)}.cov .bar i{transform:scaleX(1)}}
+</style>
 </head>
 <body>
-<main id="report"><p class="loading">Loading…</p></main>
-<script src="./data/site-data.js"></script>
-<script src="./assets/viewer.js"></script>
+
+<div id="progress" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <div class="brand">The <b>Upskilling Labs</b> · Pod ballot</div>
+  <a class="btn btn-primary" href="#vote">Vote for this pod</a>
+</header>
+
+<main>
+
+<!-- ═══════════ A T T E N T I O N ═══════════ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Frame Creation · Problem situation mapped 26 Jul 2026</p>
+
+    <h1>Money is <span class="mark">too effective</span> in campaigns.</h1>
+
+    <p class="lede">
+      Campaign capital converts into narrative dominance — not because voters are
+      stupid, but because low civics literacy, media fragmentation and partisan
+      affinity make emotional, high-frequency advertising beat non-partisan
+      information every single time.
+    </p>
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#vote">Vote for this pod</a>
+      <a class="btn btn-ghost" href="#interest">See what's missing ↓</a>
+    </div>
+
+    <div class="paradox">
+      <p>
+        <b>The paradox:</b> a healthy democracy demands an open, financially
+        unrestricted marketplace of speech — yet those exact market mechanics let
+        concentrated capital buy narrative control, overwhelming the truth and
+        eroding the voter autonomy that self-governance runs on.
+      </p>
+      <p class="who">Fixing it requires the thing that breaks it. That's why it's still open.</p>
+    </div>
+
+    <div class="cue"><span></span> Scroll — the interesting part is the gap</div>
+  </div>
+</section>
+
+<!-- receipts -->
+<div class="receipts reveal">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat"><span class="n">7</span><span class="k">Source signals mapped</span></div>
+      <div class="stat"><span class="n">1</span><span class="k">Theme — “$ is king”</span></div>
+      <div class="stat"><span class="n warn">3</span><span class="k">Evidence dimensions absent</span></div>
+      <div class="stat"><span class="n warn">0<span class="dim">/3</span></span><span class="k">Sharpness self-score</span></div>
+      <div class="stat"><span class="n">2</span><span class="k">Candidate owners, none approached</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ I N T E R E S T ═══════════ -->
+<section id="interest">
+  <div class="wrap">
+    <span class="sec-no">01 — The situation</span>
+    <div class="cols two">
+      <div>
+        <h2 class="reveal">This isn't a puzzle. It's a knot.</h2>
+        <p class="lede reveal" style="margin-top:20px">
+          A bounded problem has a solution waiting at the end of enough analysis.
+          This one doesn't. Four forces hold it in place, and each one re-arms the
+          others.
+        </p>
+      </div>
+      <div>
+        <p class="pull reveal">
+          Every intervention so far has been metabolised by the system it was aimed at.
+        </p>
+      </div>
+    </div>
+
+    <ul class="forces reveal">
+      <li>
+        <span class="k">Legal &amp; structural</span>
+        <p>Citizens United anchors campaign spending in constitutional First Amendment protection. Reform keeps hitting the same wall.</p>
+      </li>
+      <li>
+        <span class="k">Cognitive &amp; social</span>
+        <p>Voters aren't passive blank slates. They actively seek partisan narratives that confirm their identity — motivated reasoning, not gullibility.</p>
+      </li>
+      <li>
+        <span class="k">Systemic feedback</span>
+        <p>When fact-checkers intervene, partisan actors brand the fact-checkers as biased. The intervention is neutralised and civic distrust deepens.</p>
+      </li>
+      <li>
+        <span class="k">Economic incentive</span>
+        <p>Platform algorithms and media companies profit directly from high-conflict political ad spend. Nobody in the loop is paid to close it.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section>
+  <div class="wrap">
+    <span class="sec-no">02 — How we know</span>
+    <h2 class="reveal">No client handed us this.<br>The evidence did.</h2>
+    <p class="lede narrow reveal" style="margin-top:20px">
+      Seven extracts from a civics survey climbed the ladder into one theme. Here's
+      the whole trail — every claim below is traceable to a source that ships in
+      this repo.
+    </p>
+
+    <div class="ladder">
+      <div class="rung reveal">
+        <span class="k"><b>Theme</b> · tier 3</span>
+        <h3>$ is king</h3>
+        <p>Money funds more partisan sources, and partisan sources are more powerful than non-partisan ones for election information.</p>
+      </div>
+
+      <div class="rung indent reveal">
+        <span class="k"><b>Pattern</b> · tier 2</span>
+        <h3>More $ = more wins</h3>
+        <p>The more money groups put into campaigns, the more elections they win.</p>
+        <ul class="sig">
+          <li><b>Campaign Finance</b> — reform efforts consistently hit roadblocks like the Citizens United decision.</li>
+          <li><b>$ in politics</b> — entrenched actors (AIPAC), ideological. New actors: crypto, AI companies.</li>
+          <li><b>District competitiveness</b> — financial influence and gerrymandering have reduced the competitiveness of congressional districts.</li>
+        </ul>
+      </div>
+
+      <div class="rung indent indent-2 reveal">
+        <span class="k"><b>Pattern</b> · tier 2</span>
+        <h3>People seek bad sources</h3>
+        <p>People are more persuaded by partisan messaging than by neutral information — so objective fact-checkers hold a sliver of the influence that vested interests do.</p>
+        <ul class="sig">
+          <li><b>Civic distrust &amp; disinformation</b> — distrust in voting, thin civics literacy and internet-era disinformation let political entities manipulate voters' worst instincts.</li>
+          <li><b>Voter literacy</b> — why do ads have such a strong effect? Why does money in elections work?</li>
+          <li><b>Media misinformation</b> — misleading media and digital influencing are damaging civic engagement.</li>
+          <li><b>Accountability for public lies</b> — telling the truth, and holding liars accountable, is named as the missing piece of civic life.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="reveal" style="margin-top:28px"><a class="btn btn-ghost" href="./report.html">Open the full web map →</a></p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ═══════════ D E S I R E ═══════════ -->
+<section id="desire">
+  <div class="wrap">
+    <span class="sec-no">03 — The gap</span>
+    <h2 class="reveal">The map is strong exactly where it's<br>least useful.</h2>
+    <p class="lede narrow reveal" style="margin-top:20px">
+      We stress-tested our own coverage across the seven dimensions of a problem
+      situation. Three came back empty. That's not a flaw in the pitch — that's
+      the pitch.
+    </p>
+
+    <div class="coverage reveal">
+      <div class="cov" data-level="strong"><span class="lbl">Problem</span><span class="bar"><i style="--pct:100%;--d:.0s"></i></span><span class="val">Strong</span></div>
+      <div class="cov" data-level="mod"><span class="lbl">Value</span><span class="bar"><i style="--pct:70%;--d:.08s"></i></span><span class="val">Moderate</span></div>
+      <div class="cov" data-level="thin"><span class="lbl">Player</span><span class="bar"><i style="--pct:40%;--d:.16s"></i></span><span class="val">Thin</span></div>
+      <div class="cov" data-level="thin"><span class="lbl">History</span><span class="bar"><i style="--pct:30%;--d:.24s"></i></span><span class="val">Thin</span></div>
+      <div class="cov" data-level="absent"><span class="lbl">Boundary</span><span class="bar"><i style="--pct:2%;--d:.32s"></i></span><span class="val">Absent</span></div>
+      <div class="cov" data-level="absent"><span class="lbl">Flux</span><span class="bar"><i style="--pct:2%;--d:.40s"></i></span><span class="val">Absent</span></div>
+      <div class="cov" data-level="absent"><span class="lbl">Counter</span><span class="bar"><i style="--pct:2%;--d:.48s"></i></span><span class="val">Absent</span></div>
+    </div>
+
+    <div class="blindspots reveal">
+      <div>
+        <span class="k">Blind spot — boundary &amp; flux</span>
+        <p>We have no data on <b>where money stops working</b> — presidential versus municipal, statewide versus ballot initiative — and none on how generative AI and micro-targeting are changing the unit cost of persuasion.</p>
+      </div>
+      <div>
+        <span class="k">Blind spot — counterfactuals</span>
+        <p>We have <b>zero</b> evidence on campaigns where the outspent candidate won. Without it we're assuming money's power is total rather than conditional. It's probably conditional.</p>
+      </div>
+    </div>
+
+    <p class="pull reveal" style="margin-top:clamp(40px,7vw,64px)">
+      A pod that closes those three turns a strong opinion into a defensible frame.
+    </p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section>
+  <div class="wrap">
+    <span class="sec-no">04 — What the pod actually does</span>
+    <h2 class="reveal">Three questions. Week one, you're on one of them.</h2>
+    <p class="lede narrow reveal" style="margin-top:20px">
+      No warm-up phase, no scoping month. The gaps are already named, scoped and
+      matched to a method.
+    </p>
+
+    <div class="gaps">
+      <article class="gap reveal">
+        <span class="no">01</span>
+        <h3>Counterfactual analysis</h3>
+        <p class="q">In which electoral contexts does high spend <em>fail</em> to deliver wins — and what neutralises it?</p>
+        <dl>
+          <dt>Method</dt><dd>Secondary literature review &amp; electoral dataset analysis</dd>
+          <dt>Tool</dt><dd>Perplexity for the grounded historical sweep, OpenSecrets for the data</dd>
+        </dl>
+        <p class="change">→ Stops us treating financial persuasion as a law of nature, and names the conditions that weaken it.</p>
+      </article>
+
+      <article class="gap reveal">
+        <span class="no">02</span>
+        <h3>Player dynamics &amp; the persuasion mechanism</h3>
+        <p class="q">How do media buyers and strategists actually evaluate ad-spend ROI against voter scepticism and fact-checkers?</p>
+        <dl>
+          <dt>Method</dt><dd>Expert qualitative interviews — 3–5 campaign consultants, across parties</dd>
+          <dt>Tool</dt><dd>Go talk to people. Field research.</dd>
+        </dl>
+        <p class="change">→ Moves us from “voters are dupes” to the exact psychological levers being optimised for.</p>
+      </article>
+
+      <article class="gap reveal">
+        <span class="no">03</span>
+        <h3>Tech flux &amp; cost scaling</h3>
+        <p class="q">Are generative AI and automated ad generation lowering the marginal cost per persuaded voter — for insurgents, or for incumbents?</p>
+        <dl>
+          <dt>Method</dt><dd>Deep-research sweep on political ad-tech and regulatory filings</dd>
+          <dt>Tool</dt><dd>NotebookLM over ad-tech whitepapers, FEC disclosures, academic papers</dd>
+        </dl>
+        <p class="change">→ Settles whether AI democratises campaign outreach or hands legacy donors a bigger lever.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section>
+  <div class="wrap">
+    <span class="sec-no">05 — Who we'd reach, and how</span>
+    <h2 class="reveal">The hard access already has a route.</h2>
+    <p class="lede narrow reveal" style="margin-top:20px">
+      Three groups hold what we're missing. None of them are reachable by wishing.
+      Each has a realistic path.
+    </p>
+
+    <div class="access">
+      <div class="acc reveal">
+        <div><span class="cap">Need</span><span class="need">Campaign ROI &amp; targeting datasets</span></div>
+        <div><span class="cap">Barrier</span><span class="barrier">Proprietary corporate and political-consultancy data</span></div>
+        <div><span class="cap">Realistic path</span><span class="path">Meta Ad Library and Google Transparency Reports are public. Then an inquiry on the AAPC forum or LinkedIn to reach digital directors allocating $5M+ budgets.</span></div>
+      </div>
+      <div class="acc reveal">
+        <div><span class="cap">Need</span><span class="need">Persuadable &amp; late-deciding voters</span></div>
+        <div><span class="cap">Barrier</span><span class="barrier">Hard to isolate from general partisan noise</span></div>
+        <div><span class="cap">Realistic path</span><span class="path">A screener poll in location-specific communities — r/Pennsylvania, r/Wisconsin — seeking people who split their ticket or changed their vote in 2024.</span></div>
+      </div>
+      <div class="acc reveal">
+        <div><span class="cap">Need</span><span class="need">Fact-checker impact metrics</span></div>
+        <div><span class="cap">Barrier</span><span class="barrier">Internal newsroom engagement and drop-off data</span></div>
+        <div><span class="cap">Realistic path</span><span class="path">Cold outreach to journalism researchers at the Poynter Institute and the Knight First Amendment Institute; editors at PolitiFact and FactCheck.org are living the trust collapse.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section>
+  <div class="wrap">
+    <span class="sec-no">06 — The opposition</span>
+    <h2 class="reveal">Three groups are paid for this to stay exactly as it is.</h2>
+    <p class="lede narrow reveal" style="margin-top:20px">
+      Not a conspiracy — an incentive structure. Which is worse, because it needs
+      nobody to coordinate it.
+    </p>
+
+    <ul class="benefit reveal">
+      <li>
+        <h3>Ad-tech &amp; broadcast media</h3>
+        <p>Billions in guaranteed, high-margin revenue every election cycle — regardless of who wins.</p>
+      </li>
+      <li>
+        <h3>Incumbents &amp; interest groups</h3>
+        <p>High financial entry barriers insulate them from grassroots challengers. The cost <em>is</em> the moat.</p>
+      </li>
+      <li>
+        <h3>Campaign agencies</h3>
+        <p>Paid 10–15% of total media buy. A direct, structural incentive to tell clients to raise more and spend more.</p>
+      </li>
+    </ul>
+
+    <div class="cols two" style="margin-top:clamp(40px,7vw,64px)">
+      <div>
+        <h3 class="reveal">What could break our framing</h3>
+        <p class="reveal muted" style="margin-top:12px;font-size:15px">
+          The “voter as passive object” fallacy. Our cards currently assume voters
+          are dupes who are easily persuaded by ads. That ignores identity-driven
+          choice — voters often <em>want</em> low-veracity partisan messaging
+          because it validates their social group. If that's the stronger
+          explanation, the whole frame moves.
+        </p>
+      </div>
+      <div>
+        <h3 class="reveal">Why we're saying that out loud</h3>
+        <p class="reveal muted" style="margin-top:12px;font-size:15px">
+          We scored our own paradox <b style="color:var(--red)">0 out of 3</b> on
+          sharpness. It doesn't yet prove both legs of the contradiction, and it
+          hasn't named an owner who'd hold it. A pod that can't state its own
+          weakness isn't worth six weeks of your attention.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ A C T I O N ═══════════ -->
+<section class="action" id="vote">
+  <div class="wrap">
+    <span class="sec-no" style="text-align:center">07 — Your move</span>
+    <h2 class="reveal">Mapped, not solved.<br>Solving it isn't the next step.</h2>
+    <p class="lede reveal">
+      The next step is a pod that maps the field, finds an owner who can actually
+      hold this paradox, and goes and gets the three things we're missing. That
+      pod forms on votes. This is the vote.
+    </p>
+
+    <!-- Replace "#vote-form" with the real ballot URL — it is the only link to change. -->
+    <div class="btn-row reveal">
+      <a class="btn btn-primary" href="#vote-form" id="vote-cta">Vote to form this pod</a>
+      <a class="btn btn-ghost" href="./report.html">Read the full map first</a>
+    </div>
+    <p class="fineprint reveal">
+      One vote. Pods form at quorum. If it doesn't reach quorum, the map stays
+      public and the gaps stay open.
+    </p>
+
+    <ul class="next reveal">
+      <li><span class="no">01</span><h3>Map the field</h3><p>Every player connected to the situation — defined by practice and currency, not job title.</p></li>
+      <li><span class="no">02</span><h3>Identify a client</h3><p>Of the candidate owners — ad-tech platform integrity, fact-checkers — who could adopt a resolution, and what would they need to see?</p></li>
+      <li><span class="no">03</span><h3>Choose a vehicle</h3><p>Internal team, government program, open-source project, nonprofit, co-op. No right answer, only trade-offs.</p></li>
+      <li><span class="no">04</span><h3>Deepen the archaeology</h3><p>Close the three gaps. Interviews, deep-research sweeps, secondary sources.</p></li>
+      <li><span class="no">05</span><h3>Create frames</h3><p>“If this situation is approached as if it is ___, then ___.” Only once the field is mapped.</p></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div>
+        <div class="brand">The <b>Upskilling Labs</b> · Sensemaking Engine</div>
+        <p style="margin-top:8px">Frame Creation (Kees Dorst) · 6 cards · 7 signals · exported 26 Jul 2026</p>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="./report.html">Full web map</a>
+        <a href="./slides.html">Meet the pod</a>
+        <a href="./data/extracts.csv">Source extracts</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky">
+  <a class="btn btn-primary" href="#vote-form">Vote to form this pod</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll progress + sticky chrome */
+  var progress = document.getElementById('progress');
+  var topbar   = document.getElementById('topbar');
+  var sticky   = document.getElementById('sticky');
+  var vote     = document.getElementById('vote');
+  var ticking  = false;
+
+  document.body.classList.add('has-sticky');
+
+  function onScroll(){
+    var y = window.scrollY || window.pageYOffset;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (h > 0 ? Math.min(y / h, 1) : 0) + ')';
+    topbar.classList.toggle('stuck', y > 80);
+
+    /* show the mobile bar once past the hero, hide it over the real CTA */
+    var past = y > window.innerHeight * 0.85;
+    var atVote = vote.getBoundingClientRect().top < window.innerHeight * 0.9;
+    sticky.classList.toggle('show', past && !atVote);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ ticking = true; window.requestAnimationFrame(onScroll); }
+  }, {passive:true});
+  onScroll();
+
+  /* reveals */
+  var targets = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    targets.forEach(function(el){ el.classList.add('is-in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.12});
+    targets.forEach(function(el){ io.observe(el); });
+  }
+
+  /* placeholder ballot link: tell people plainly instead of jumping nowhere */
+  document.querySelectorAll('a[href="#vote-form"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      ev.preventDefault();
+      document.getElementById('vote').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+      a.textContent = 'Ballot link goes here →';
+      setTimeout(function(){ a.textContent = 'Vote to form this pod'; }, 2600);
+    });
+  });
+})();
+</script>
 </body>
 </html>
